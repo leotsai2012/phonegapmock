@@ -1,14 +1,27 @@
 ﻿if(window.navigator == undefined) {
     window.navigator = { };
 }
+setTimeout(function () {
+    var event = new Event('deviceready');
+    document.dispatchEvent(event);
+}, 2000);
+if (window.cordova == undefined) {
+    window.cordova = {
+        exec: function (success, fail, className, methodName, paras) {
+            if (success != null) {
+                success();
+            }
+        }
+    };
+}
 navigator.contacts = {
     find: function(contactFields, contactSuccess, contactError, contactFindOptions) {
         var contacts = [
             {
                 displayName: "Mike",
                 name: {
-                    familyName: 'Hein',
-                    formatted:'Mike Hein'
+                    familyName: 'Capewell',
+                    formatted:'Mike Capewell'
                 },
                 phoneNumbers: [
                     {
@@ -20,6 +33,10 @@ navigator.contacts = {
             },
             {
                 displayName: "Leo",
+                name: {
+                    familyName: 'Cai',
+                    formatted:'Leo Cai'
+                },
                 phoneNumbers: [
                     {
                         type: "string",
